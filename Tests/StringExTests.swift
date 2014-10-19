@@ -9,7 +9,7 @@ import XCTest
 import StringEx
 
 class StringExTests: XCTestCase {
-    
+
     func test_stringToUInt() {
         XCTAssert("".toUInt() == nil)
         XCTAssert(" ".toUInt() == nil)
@@ -80,5 +80,10 @@ class StringExTests: XCTestCase {
         XCTAssert("0.2".toDouble() == 0.2)
         XCTAssert("0.3".toDouble() == 0.3)
         XCTAssert("1.23456789012345e36".toDouble() == 1.23456789012345e36)
+        XCTAssert("inf".toDouble() == 1.0 / 0.0)
+        XCTAssert("-inf".toDouble() == -1.0 / 0.0)
+        XCTAssert("nan".toDouble() != "nan".toDouble())
+        XCTAssert("NaN".toDouble() != "NaN".toDouble())
     }
 }
+
